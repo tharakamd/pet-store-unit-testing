@@ -25,7 +25,7 @@ public class PetStoreServiceImpl implements PetStoreService {
 
     }
 
-    public Animal findAnimal(String name) throws AnimalNotFoundException {
+    public Animal findAnimal(String name) {
 
         if (isAnimalExists(name)) {
             return petstoreDatabaseService.getAnimal(name);

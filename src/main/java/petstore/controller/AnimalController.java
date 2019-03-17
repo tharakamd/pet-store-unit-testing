@@ -23,16 +23,11 @@ public class AnimalController {
 
         if (petstoreService.isAnimalExists(animal.getName())) {
             return new ResponseEntity<String>("Animal already exists", HttpStatus.FORBIDDEN);
-
         } else {
-
             boolean animalCreated = petstoreService.saveAnimal(animal.getName(), animal);
-
             if (animalCreated) {
-
                 return new ResponseEntity<String>("Animal created :", HttpStatus.CREATED);
             } else {
-
                 return new ResponseEntity<String>("Animal not created :", HttpStatus.INTERNAL_SERVER_ERROR);
             }
 
@@ -47,7 +42,6 @@ public class AnimalController {
         if (animal == null) {
             return new ResponseEntity<Animal>(HttpStatus.NOT_FOUND);
         } else {
-
             return new ResponseEntity<Animal>(animal, HttpStatus.OK);
         }
     }
