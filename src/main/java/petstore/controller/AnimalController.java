@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+import petstore.exception.AnimalNotFoundException;
 import petstore.model.Animal;
 import petstore.service.PetStoreService;
 
@@ -37,12 +39,11 @@ public class AnimalController {
 
     @GetMapping(value = "{name}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Animal> findAnimal(@PathVariable(value = "name") String name) {
-        Animal animal = petstoreService.findAnimal(name);
-
-        if (animal == null) {
-            return new ResponseEntity<Animal>(HttpStatus.NOT_FOUND);
-        } else {
+        try {
+            Animal animal = petstoreService.findAnimal(name);
             return new ResponseEntity<Animal>(animal, HttpStatus.OK);
+        } catch (AnimalNotFoundException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Animal not found : " + name);
         }
     }
 
