@@ -1,11 +1,13 @@
 package petstore.service.impl;
 
+import org.springframework.stereotype.Service;
 import petstore.model.Animal;
 import petstore.service.PetstoreDatabaseService;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Service
 public class PetStoreInMemoryDatabaseService implements PetstoreDatabaseService {
 
     private Map<String, Animal> store;

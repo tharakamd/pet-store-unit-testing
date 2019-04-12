@@ -1,10 +1,12 @@
 package petstore.service.impl;
 
+import org.springframework.stereotype.Service;
 import petstore.exception.AnimalNotFoundException;
 import petstore.model.Animal;
 import petstore.service.PetStoreService;
 import petstore.service.PetstoreDatabaseService;
 
+@Service
 public class PetStoreServiceImpl implements PetStoreService {
 
     private PetstoreDatabaseService petstoreDatabaseService;
