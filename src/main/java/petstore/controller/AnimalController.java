@@ -22,7 +22,7 @@ public class AnimalController {
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> saveAnimal(@RequestBody Animal animal) {
-
+        // todo: change this as previous function
         if (petstoreService.isAnimalExists(animal.getName())) {
             return new ResponseEntity<String>("Animal already exists", HttpStatus.FORBIDDEN);
         } else {
